@@ -4,13 +4,14 @@
     --slateColor: #1e293b;
     --offWhite: #f1f5f9;
     --bgGray: #cbd5e1;
+    --roseRed: #9f1239;
     font-family: 'Roboto', sans-serif;
     
 }
 
 body{
     display: grid;
-    grid-template: 150px 1fr / 1fr 4fr;
+    grid-template: 150px 1fr / 300px 4fr;
     height: 100vh;
     padding: 0px;
     margin: 0px;
@@ -24,12 +25,29 @@ button {
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
-    box-sizing: border-box;
 }
 
 p {
     padding: 0px;
     margin: 0px;
+}
+
+h1, h2, h3, h4 {
+    margin: 15px 0px;
+}
+
+
+/*Sidebar styles */
+
+.sidebar{
+    grid-row-start: 1;
+    grid-row-end: 3;
+    background-color: var(--slateColor);
+    color: var(--offWhite);
+    padding: 20px;
+    display: grid;
+    align-items: start;
+    grid-template-rows: 20vh 30vh 50vh;
 }
 
 .sidebar ul{
@@ -46,22 +64,15 @@ li{
     font-size: 1.2em;
 }
 
-.sidebar{
-    grid-row-start: 1;
-    grid-row-end: 3;
-    background-color: var(--slateColor);
-    color: var(--offWhite);
-    padding: 20px;
-    display: grid;
-    align-items: start;
-    grid-template-rows: 1fr 3fr 5fr;
-}
 
-.main-content{
+/* Header styles*/
+
+.header{
     display: grid;
-    grid-template-columns: 3fr 1fr;
-    background-color: var(--bgGray);
-    padding: 30px;
+    grid-template-rows: 1fr 2fr;
+    padding: 10px 30px;
+    gap: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;    
 }
 
 .profile {
@@ -69,12 +80,6 @@ li{
     border-radius: 50%;
 }
 
-.header{
-    display: grid;
-    grid-template-rows: 1fr 2fr;
-    padding: 10px 30px;
-    gap: 10px;
-}
 
 .user-actions{
     display: flex;
@@ -93,13 +98,14 @@ li{
     border-radius: 30px;
     color: var(--offWhite);
     font-weight: 500;
+
 }
 
 .above-header{
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 30px;
+    gap: 50px;
 }
 
 .profile-name {
@@ -112,11 +118,20 @@ li{
     min-width: 300px;
     display: flex;
     align-items: center;
+    height: 100%;
 }
 
 .search > input {
     width: 80%;
     margin-left: 20px;
+    background-color: var(--bgGray);
+    border: none;
+    border-radius: 10px;
+    height: 60%;
+}
+
+.search-btn{
+    margin-top: 6px;
 }
 
 .logo-container{
@@ -141,7 +156,110 @@ li{
 }
 
 .project-card{
-    background-color: var(--offWhite);
-    height: 200px;
+    background-image: linear-gradient(to right, var(--roseRed) 0%, var(--roseRed) 2%, var(--offWhite) 2%, var(--offWhite));
+    height: 250px;
 }
 
+
+/*Main content styles*/
+
+.main-content{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr 2fr;
+    background-color: var(--bgGray);
+    padding: 30px;
+    position: relative;
+    z-index: -10;
+    gap: 30px;
+}
+
+.your-projects {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 15px;
+}
+
+.your-projects h2 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.project-card {
+    border-radius: 10px;
+    padding: 25px 25px 50px 25px;
+    box-sizing: border-box;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.1) 5px 5px 5px 0px;    
+}
+
+.card-btns {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+}
+
+
+/*Announcement styles*/
+
+.announcements-card,
+.trending-card{
+    background-color: var(--offWhite);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 5px 5px 5px 0px;   
+    
+}
+
+.announce-blurb {
+    border-bottom-style: solid;
+    border-bottom-color: var(--slateColor);
+    border-bottom-width: 1px;
+    padding-bottom: 20px;
+}
+
+.announce-blurb:last-of-type {
+    border: none;
+}
+
+
+
+.announcements-card h4{
+    font-size: 1em;
+}
+
+.announcements-card p {
+    font-size: 0.8em;
+}
+
+.profile-highlight {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    max-height: 100px;
+    gap: 0px;
+}
+
+.profile-highlight .profile {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    width: 65%;
+    justify-self: center;
+}
+.profile-highlight h4 {
+    margin: 0px;
+    padding: 0px;
+}
+
+.trending-card {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 25px;
+}
